@@ -18,7 +18,7 @@
 
 ## Windows
   #### 0. Clone Project
-    - $ git clone https://github.com/lezakkaz/DrawSomething.git
+    - $ git clone https://github.com/Boeing737ng/drawing_captcha.git
 
   #### 1. Install python3.6v
     - python3.6v : https://www.python.org/downloads/
@@ -43,8 +43,8 @@
 
 ## Mac OS / Linux
   #### 0. Clone Project
-    - $ git clone https://github.com/lezakkaz/DrawSomething.git
-    - $ cd DrawSomething
+    - $ git clone https://github.com/Boeing737ng/drawing_captcha.git
+    - $ cd drawing_captcha
 
   #### 1. Install python3.6v
     - python3.6v : https://www.python.org/downloads/
