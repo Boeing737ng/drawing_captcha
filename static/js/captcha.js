@@ -155,7 +155,17 @@ function success(data) {
         let symbol = lst[i]
         classNames[i] = symbol
     }
+    classNames = removeUnderScore(classNames);
     displayMissionWord();
+}
+
+function removeUnderScore(wordlist) {
+    for(i in wordlist) {
+        if(wordlist[i].includes("_")){
+            wordlist[i] = wordlist[i].replace("_", " ");
+        }
+    }
+    return wordlist;
 }
 
 /*
@@ -247,6 +257,7 @@ async function displayMissionWord() {
     var word = await pickMissionWord();
     console.log(word);
     document.getElementById("draw-word").textContent = word;
+    $('#start-captcha').hide();
 }
 
 /*
@@ -257,5 +268,3 @@ function erase() {
     canvas.backgroundColor = '#ffffff';
     coords = [];
 }
-
-start();
