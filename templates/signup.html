@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SIGN UP</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+    <div class="page-wrapper">
+        <section class="signup-header">
+            <p>SIGN UP</p>
+        </section>
+        <section class="signup-lower-box">
+            <div class="signup-wrapper">
+                <div class="form-wrapper">
+                    <input type="text" placeholder="이메일">
+                    <input type="password" placeholder="비밀번호">
+                    <input type="password" placeholder="비밀번호 확인">
+                </div>
+            </div>
+            <div class="captcha-wrapper">
+                <!-- <p class="header">Draw the following</p> -->
+                <br>
+                <div class="canvas-wrapper">
+                    <div id="start-captcha">
+                        <p id="loading-text">Please wait....</p>
+                        <button id="start-captcha-btn">I'm not a robot</button>
+                    </div>
+                    <p>Draw: <span id="draw-word"></span></p>
+                    <div id="canvas-btn-wrapper">
+                        <button id="new-word">New word</button>
+                        <button id="re-draw">Re-draw</button>
+                    </div>
+                    <canvas id="drawing-section"></canvas>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.10.0"> </script>
+    <script src="../static/js/fabric.js"></script>
+    <script src="../static/js/captcha.js"></script>
+    <script src="../static/js/main.js"></script>
+</body>
+</html>
