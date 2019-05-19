@@ -4,14 +4,212 @@ body, html {
     margin: 0;
     padding: 0;
 }
-
 * {
     box-sizing: border-box;
 }
+/******************** LOGIN ********************/
+::placeholder {
+    color: #4799F4;
+}
+:-ms-input-placeholder {
+    color: #4799F4;
+}
 
+::-ms-input-placeholder {
+    color: #4799F4;
+}
+.bold {
+    font-weight: bold;
+}
+*:focus {
+    outline: none;
+}
+button:hover {
+    cursor: pointer;
+}
+.page-wrapper {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    left: 0;
+    border: 1px solid #E1E1E1;
+    width: 370px;
+    height: 680px;
+    margin: auto;
+    transform: translate(0,-50%);
+}
+.upper-box {
+    position: relative;
+    background-color: #4799F4;
+    width: 100%;
+    height: 220px;
+}
+.upper-box p {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    color: #FFFFFF;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+.lower-box {
+    position: relative;
+    width: 100%;
+    height: calc(100% - 220px);
+}
+.lower-box input, .signup-lower-box input, .lower-box button {
+    width: 100%;
+    height: 45px;
+    border-radius: 50px;
+}
+.lower-box input, .signup-lower-box input {
+    border: 2px solid #C1E1FA;
+    color: #4799F4;
+    padding: 0 15px;
+    font-size: 13px;
+}
+.login-wrapper, .action-wrapper {
+    position: relative;
+    width: 80%;
+    height: 50%;
+    margin: auto;
+}
+.form-wrapper, .btn-wrapper {
+    position: absolute;
+    height: fit-content;
+    width: 100%;
+    top: 50%;
+    transform: translate(0, -50%);
+    
+}
+#signin-btn {
+    border: 2px solid #4799F4;
+    background-color: #4799F4;
+    color: #FFFFFF;
+}
+#signup-btn {
+    border: 2px solid #4799F4;
+    color: #4799F4;
+}
+.form-wrapper input:nth-child(2), .btn-wrapper button:nth-child(2) {
+    margin: 15px 0;
+}
+
+/******************** SIGNUP ********************/
+.signup-header {
+    position: relative;
+    width: 100%;
+    height: 70px;
+    background-color: #4799F4;
+}
+.signup-header p {
+    position: absolute;
+    bottom: 0;
+    color: #FFFFFF;
+    text-align: center;
+    width: 100%;
+    font-size: 15px;
+}
+.signup-lower-box {
+    position: relative;
+    width: 100%;
+    height: calc(100% - 70px);
+}
+.signup-wrapper, .captcha-wrapper {
+    position: relative;
+    width: 80%;
+    margin: auto;
+} 
+.signup-wrapper {
+    height: 35%;
+}
+.captcha-wrapper {
+    height: 65%;
+}
+.captcha-wrapper p.header {
+    color: #4799F4;
+    margin: 8px 0;
+    font-size: 14px;
+}
+.canvas-wrapper {
+    position: relative;
+    width: 100%;
+    height: 280px;
+    border: 2px solid #C1E1FA;
+    border-radius: 12px;
+}
+#start-captcha {
+    position: absolute;
+    z-index: 9999;
+    background-color: #FFFFFF;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+}
+#start-captcha button {
+    width: fit-content;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 50%;
+    transform: translate(0, -50%);
+    background-color: #4799F4;
+    color: #FFFFFF;
+    border: none;
+    height: 25px;
+    border-radius: 25px;
+}
+#loading-text {
+    display: none;
+    text-align: center;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+.canvas-wrapper p {
+    z-index: 9000;
+    position: absolute;
+    color: #4799F4;
+    font-size: 17px;
+    margin: 8px;
+}
+.canvas-wrapper p>span {
+    font-weight: bold;
+}
+#canvas-btn-wrapper {
+    z-index: 9000;
+    position: absolute;
+    margin: 8px;
+    right: 0;
+}
+#canvas-btn-wrapper button {
+    border: none;
+    width: fit-content;
+    height: 20px;
+    border-radius: 50px;
+    color: #FFFFFF;
+}
+#canvas-btn-wrapper button:first-child {
+    background-color: #4799F4;
+}
+#canvas-btn-wrapper button:last-child {
+    background-color: #C8C8C8;
+}
+.canvas-container {
+    position: absolute !important;
+    width: 100% !important;
+    height: calc(100% - 35px) !important;
+    bottom: 0 !important;
+}
 canvas {
-    width: 400px !important;
-    height: 400px !important;
-    border: 4px solid #666;
-    box-shadow: 1px 1px 10px 1px #aaa;
+    position: absolute !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 12px;
 }
