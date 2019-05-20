@@ -13,9 +13,10 @@ $(document).ready(function() {
             }
         }
     );
-    $("#return-home").click(
+    $("#backward").click(
         function() {
-            window.location.href = "../";
+            console.log('yes')
+            window.location.href = "./";
         }
     );
     $('#signup-btn').click(

@@ -103,6 +103,16 @@ button:hover {
     height: 70px;
     background-color: #4799F4;
 }
+.signup-header img {
+    z-index: 9999;
+    position: absolute;
+    width: 17px;
+    bottom: 16px;
+    left: 15px;
+}
+#backward:hover {
+    cursor: pointer;
+}
 .signup-header p {
     position: absolute;
     bottom: 0;
