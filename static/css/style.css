@@ -213,3 +213,12 @@ canvas {
     height: 100% !important;
     border-radius: 12px;
 }
+
+/******************** Naver Captcha test Page ********************/
+.test-round-wrapper{
+    border:1px solid black;
+}
+.naver-captcha-wrapper{
+    border:3px solid black;
+}
+

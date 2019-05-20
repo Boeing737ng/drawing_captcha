@@ -122,3 +122,9 @@ training.*
 
 # SVG data
 /temp
+
+#NAVER CAPTCHA key
+/static/python/naverCaptchaKey.py
+
+#NAVER CAPTCHA images
+/static/captchaImage/
