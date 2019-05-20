@@ -13,26 +13,37 @@
 
 <body>
     <div class="page-wrapper">
-        <section class="signup-header">
+        <section class="naver-captcha-header">
             <p>NAVER Captcha</p>
         </section>
-        <section class="signup-lower-box">
+        <section class="naver-captcha-lower-box">
             <div class="test-round-wrapper">
-                <p>0/50</p>
-            </div>
-            <div class="naver-captcha-wrapper">
-                <br>
-                <div class="canvas-wrapper">
-                    <div class="naver-captcha-image">
-
-                    </div>
-                    <form id="form01">
-                        <input type="text" id="key" name="key">
-                        <input type="text" id="value" name="value">
-                        <button type="button" id="btnNextCaptcha">다른 그림</button>
-                        <button type="button" id="btnSendValidationCheck">전송</button>
-                    </form>
+                <div class="test-round-number-wrapper">
+                    <div id="current-round">0</div>
+                    <div>/50</div>
                 </div>
+            </div>
+            <div class="naver-captcha-wrapper naverCaptcha-center">
+                <div>
+                    <p>아래 이미지를 보이는 대로 입력해 주세요</p>
+                </div>
+                <div class="naver-captcha-image-and-btn-wrapper">
+                    <div class="naver-captcha-image-wrapper">
+                        <!-- <img src='static/captchaImage/captcha1558369603.jpg'> -->
+                    </div>
+
+                    <div class="naver-captcha-nextCaptcha-wrapper">
+                        <button type="button" id="btnNextCaptcha">Refresh</button>
+                    </div>
+                </div>
+
+
+                <div class="naver-captcha-form">
+                    <input type="hidden" id="key" name="key">
+                    <input type="text" id="value" name="value">
+                    <button type="button" id="btnSendValidationCheck">전송</button>
+                </div>
+
             </div>
         </section>
     </div>

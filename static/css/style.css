@@ -97,13 +97,13 @@ button:hover {
 }
 
 /******************** SIGNUP ********************/
-.signup-header {
+.signup-header, .naver-captcha-header{
     position: relative;
     width: 100%;
     height: 70px;
     background-color: #4799F4;
 }
-.signup-header p {
+.signup-header p, .naver-captcha-header p{
     position: absolute;
     bottom: 0;
     color: #FFFFFF;
@@ -111,7 +111,7 @@ button:hover {
     width: 100%;
     font-size: 15px;
 }
-.signup-lower-box {
+.signup-lower-box, .naver-captcha-lower-box {
     position: relative;
     width: 100%;
     height: calc(100% - 70px);
@@ -216,9 +216,60 @@ canvas {
 
 /******************** Naver Captcha test Page ********************/
 .test-round-wrapper{
-    border:1px solid black;
+    /* border:3px solid blue; */
 }
 .naver-captcha-wrapper{
-    border:3px solid black;
+    /* border:3px solid black; */
+    background-color:	#f4f0f0;
+    padding:10px;
 }
 
+.naver-captcha-wrapper p{
+    font-size:12px;
+    border:3px solid red;
+    margin:0;
+}
+.naver-captcha-image-wrapper{
+    border:3px solid red;
+}
+.naver-captcha-nextCaptcha-wrapper{
+    border:3px solid red;
+}
+.naver-captcha-form{
+    border:3px solid yellow;
+}
+
+.naverCaptcha-center{
+    position: relative;
+    margin:0 auto;
+    width:90%;
+    top: 40%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+.test-round-number-wrapper{
+    float:right;
+    margin-right:10px; 
+    margin-top:10px;   
+}
+
+.test-round-number-wrapper div{
+    display: inline-block;
+    font:  bold 50px arial;
+    color:#2699FB;
+}
+
+.naver-captcha-image-and-btn-wrapper div{
+    display: inline-block;
+    
+}
+.naver-captcha-image-and-btn-wrapper {
+    border: 3px solid yellow;
+}
+
+#btnNextCaptcha{
+    border:none;
+    background-color:white;
+    height:40px;
+    
+}
