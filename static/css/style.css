@@ -113,7 +113,6 @@ button:hover {
 #backward:hover {
     cursor: pointer;
 }
-.signup-header p {
 .signup-header p, .naver-captcha-header p{
     position: absolute;
     bottom: 0;
