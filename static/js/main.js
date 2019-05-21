@@ -27,4 +27,19 @@ $(document).ready(function() {
             erase();
         }   
     );
+    $('#signin-btn').click(
+        function() {
+            signIn();
+        }   
+    );
+    $('#confirm-signup').click(
+        function() {
+            signUp();
+        }   
+    );
+    $('#logout').click(
+        function() {
+            signOut();
+        }   
+    );
 });
