@@ -122,14 +122,18 @@ function getFrame() {
         //setTable(names, probs)
 
         console.log(names);
-        isHuman(names);
+        var drawCheck = checkDrawing(names);
+        if(drawCheck) {
+            document.getElementById('confirm-signup').style.display = 'block';
+            document.getElementById('captcha-success').style.display = 'block';
+        }
     }
 }
-function isHuman(names) {
+function checkDrawing(names) {
     if(names.includes(answer)) {
-        document.getElementById('confirm-signup').style.display = 'block';
-        document.getElementById('captcha-success').style.display = 'block';
+        return true;
     }
+    return false;
 }
 
 /*
