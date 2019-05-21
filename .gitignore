@@ -122,3 +122,6 @@ training.*
 
 # SVG data
 /temp
+
+# Firebase info file
+firebase.js
