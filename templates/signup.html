@@ -10,14 +10,15 @@
 <body>
     <div class="page-wrapper">
         <section class="signup-header">
+            <img id="backward" src="../static/images/back_arrow.png" alt="">
             <p>SIGN UP</p>
         </section>
         <section class="signup-lower-box">
             <div class="signup-wrapper">
                 <div class="form-wrapper">
-                    <input type="text" placeholder="이메일">
-                    <input type="password" placeholder="비밀번호">
-                    <input type="password" placeholder="비밀번호 확인">
+                    <input id="user-signup-email" type="text" placeholder="이메일">
+                    <input id="user-signup-pwd" type="password" placeholder="비밀번호">
+                    <input id="pwd-check" type="password" placeholder="비밀번호 확인">
                 </div>
             </div>
             <div class="captcha-wrapper">
@@ -28,6 +29,11 @@
                         <p id="loading-text">Please wait....</p>
                         <button id="start-captcha-btn">I'm not a robot</button>
                     </div>
+                    <div id="captcha-success">
+                        <div id="success-bg"></div>
+                        <img src="../static/images/success.png" alt="">
+                        <p>You are not a robot</p>
+                    </div>
                     <p>Draw: <span id="draw-word"></span></p>
                     <div id="canvas-btn-wrapper">
                         <button id="new-word">New word</button>
@@ -35,15 +41,19 @@
                     </div>
                     <canvas id="drawing-section"></canvas>
                 </div>
+                <button id="confirm-signup">CONTINUE</button>
             </div>
         </section>
     </div>
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.10.0"> </script>
     <script src="../static/js/fabric.js"></script>
     <script src="../static/js/captcha.js"></script>
+    <script src="../static/js/firebase.js"></script>
+    <script src="../static/js/authentification.js"></script>
     <script src="../static/js/main.js"></script>
 </body>
 </html>

@@ -128,3 +128,6 @@ training.*
 
 #NAVER CAPTCHA images
 /static/captchaImage/
+
+# Firebase info file
+firebase.js

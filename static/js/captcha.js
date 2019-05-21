@@ -7,6 +7,7 @@ var classNames = [];
 var canvas;
 var coords = [];
 var mousePressed = false;
+var answer;
 
 /*
 prepare the drawing canvas 
@@ -114,15 +115,25 @@ function getFrame() {
         const pred = model.predict(preprocess(imgData)).dataSync()
 
         //find the top 5 predictions 
-        const indices = findIndicesOfMax(pred, 5)
-        const probs = findTopValues(pred, 5)
+        const indices = findIndicesOfMax(pred, 2)
+        const probs = findTopValues(pred, 2)
         const names = getClassNames(indices)
         //set the table 
         //setTable(names, probs)
 
         console.log(names);
+        var drawCheck = checkDrawing(names);
+        if(drawCheck) {
+            document.getElementById('confirm-signup').style.display = 'block';
+            document.getElementById('captcha-success').style.display = 'block';
+        }
     }
-
+}
+function checkDrawing(names) {
+    if(names.includes(answer)) {
+        return true;
+    }
+    return false;
 }
 
 /*
@@ -255,7 +266,7 @@ async function pickMissionWord() {
 
 async function displayMissionWord() {
     var word = await pickMissionWord();
-    console.log(word);
+    answer = word;
     document.getElementById("draw-word").textContent = word;
     $('#start-captcha').hide();
 }

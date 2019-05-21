@@ -1,21 +1,9 @@
-$(document).ready(function() { 
-    $(".select-game").click(
+var device = "undefined";
+
+$(document).ready(function() {
+    $("#backward").click(
         function() {
-            var index = $(".select-game").index(this);
-            if(index == 0) {
-                window.location.href = "speed_draw";
-            } else if(index == 1) {
-                window.location.href = "guess_draw";
-            } else if(index == 2) {
-                window.location.href = "draw_together";
-            } else if(index == 3) {
-                window.location.href = "about";
-            }
-        }
-    );
-    $("#return-home").click(
-        function() {
-            window.location.href = "../";
+            window.location.href = "./";
         }
     );
     $('#signup-btn').click(
@@ -41,5 +29,34 @@ $(document).ready(function() {
             erase();
         }   
     );
-    
+    $('#signin-btn').click(
+        function() {
+            signIn();
+        }   
+    );
+    $('#confirm-signup').click(
+        function() {
+            signUp();
+        }   
+    );
+    $('#logout').click(
+        function() {
+            signOut();
+        }   
+    );
 });
+
+function checkDevice() {
+    var filter = "win16|win32|win64|mac|macintel"; 
+    if ( navigator.platform ) { 
+        if ( filter.indexOf( navigator.platform.toLowerCase() ) < 0 ) { 
+            //mobile 
+            device = 'mobile';
+            alert('mobile 접속'); 
+        } else { 
+            //pc 
+            device = 'PC';
+            alert('pc 접속'); 
+        } 
+    }
+}
