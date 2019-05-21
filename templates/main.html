@@ -10,7 +10,7 @@
 <body>
     <div class="page-wrapper">
         <section class="main-upper-box">
-            <p class="device">device: <span class="bold">mobile</span></p>
+            <p class="device">device: <span id="device" class="bold"></span></p>
             <img id="logout" src="../static/images/logout.png" alt="">
             <img class="profile" src="../static/images/profile.png" alt="">
             <p id="user-email"></p>
@@ -45,6 +45,8 @@
     <script src="../static/js/authentification.js"></script>
     <script src="../static/js/main.js"></script>
     <script>
+        checkDevice();
+        document.getElementById('device').textContent = device;
         firebase.auth().onAuthStateChanged(function (user) {
             if (user) {
                 document.getElementById('user-email').textContent = getSignInEmail();

@@ -1,3 +1,5 @@
+var device = "undefined";
+
 $(document).ready(function() {
     $("#backward").click(
         function() {
@@ -43,3 +45,18 @@ $(document).ready(function() {
         }   
     );
 });
+
+function checkDevice() {
+    var filter = "win16|win32|win64|mac|macintel"; 
+    if ( navigator.platform ) { 
+        if ( filter.indexOf( navigator.platform.toLowerCase() ) < 0 ) { 
+            //mobile 
+            device = 'mobile';
+            alert('mobile 접속'); 
+        } else { 
+            //pc 
+            device = 'PC';
+            alert('pc 접속'); 
+        } 
+    }
+}
