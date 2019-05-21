@@ -13,7 +13,7 @@
             <p class="device">device: <span class="bold">mobile</span></p>
             <img id="logout" src="../static/images/logout.png" alt="">
             <img class="profile" src="../static/images/profile.png" alt="">
-            <p class="user-email">ghlove0317@naver.com</p>
+            <p id="user-email"></p>
         </section>
         <section class="option-wrapper">
             <div id="option-drawing" class="option">
@@ -39,5 +39,17 @@
             </div>
         </section>
     </div>
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../static/js/firebase.js"></script>
+    <script src="../static/js/authentification.js"></script>
+    <script src="../static/js/main.js"></script>
+    <script>
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (user) {
+                document.getElementById('user-email').textContent = getSignInEmail();
+            }
+        });
+    </script>
 </body>
 </html>

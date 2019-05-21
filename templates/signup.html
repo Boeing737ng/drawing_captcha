@@ -16,9 +16,9 @@
         <section class="signup-lower-box">
             <div class="signup-wrapper">
                 <div class="form-wrapper">
-                    <input type="text" placeholder="이메일">
-                    <input type="password" placeholder="비밀번호">
-                    <input type="password" placeholder="비밀번호 확인">
+                    <input id="user-signup-email" type="text" placeholder="이메일">
+                    <input id="user-signup-pwd" type="password" placeholder="비밀번호">
+                    <input id="pwd-check" type="password" placeholder="비밀번호 확인">
                 </div>
             </div>
             <div class="captcha-wrapper">
@@ -45,12 +45,15 @@
             </div>
         </section>
     </div>
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.10.0"> </script>
     <script src="../static/js/fabric.js"></script>
     <script src="../static/js/captcha.js"></script>
+    <script src="../static/js/firebase.js"></script>
+    <script src="../static/js/authentification.js"></script>
     <script src="../static/js/main.js"></script>
 </body>
 </html>
