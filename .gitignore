@@ -127,7 +127,7 @@ training.*
 /static/python/naverCaptchaKey.py
 
 #NAVER CAPTCHA images
-/static/captchaImage/
+/static/captchaImage/*.jpg
 
 # Firebase info file
 firebase.js
