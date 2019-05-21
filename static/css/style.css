@@ -299,7 +299,7 @@ canvas {
 #logout:hover {
     cursor: pointer;
 }
-.user-email {
+#user-email {
     position: absolute;
     width: fit-content;
     color: #FFFFFF;
