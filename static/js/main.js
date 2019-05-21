@@ -1,21 +1,6 @@
-$(document).ready(function() { 
-    $(".select-game").click(
-        function() {
-            var index = $(".select-game").index(this);
-            if(index == 0) {
-                window.location.href = "speed_draw";
-            } else if(index == 1) {
-                window.location.href = "guess_draw";
-            } else if(index == 2) {
-                window.location.href = "draw_together";
-            } else if(index == 3) {
-                window.location.href = "about";
-            }
-        }
-    );
+$(document).ready(function() {
     $("#backward").click(
         function() {
-            console.log('yes')
             window.location.href = "./";
         }
     );
