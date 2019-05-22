@@ -128,11 +128,9 @@ function checkDevice() {
         if (filter.indexOf(navigator.platform.toLowerCase()) < 0) {
             //mobile 
             device = 'mobile';
-            alert('mobile 접속');
         } else {
             //pc 
             device = 'PC';
-            alert('pc 접속');
         }
     }
 }

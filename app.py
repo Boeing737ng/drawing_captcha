@@ -20,6 +20,10 @@ def signup():
 def main():
     return render_template('main.html')
     
+@app.route('/drawingCaptcha')
+def drawingCaptcha():
+    return render_template('drawingCaptcha.html')
+
 @app.route('/googleCaptcha')
 def googleCaptcha():
     return render_template('googleCaptcha.html')

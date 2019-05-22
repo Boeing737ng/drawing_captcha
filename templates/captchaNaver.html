@@ -14,10 +14,9 @@
 <body>
     <div class="page-wrapper">
         <section class="naver-captcha-header">
-            <p class="device">device: <span id="device" class="bold"></span></p>
             <p>NAVER Captcha</p>
             <div>
-                <button type="button" id="btnSuccess">돌아가기</button>
+                <img id="test_backward" src="../static/images/back_arrow.png" alt="">
             </div>
         </section>
         <section class="naver-captcha-lower-box">
@@ -32,26 +31,21 @@
                     <p>아래 이미지를 보이는 대로 입력해 주세요</p>
                 </div>
                 <div class="naver-captcha-image-and-btn-wrapper">
-                    <div class="naver-captcha-image-wrapper">
-                        <!-- <img src='static/captchaImage/captcha1558369603.jpg'> -->
+                    <div class="naver-captcha-image-wrapper gray-border">
+                        <img src='static/captchaImage/captcha1558501417.jpg'>
                     </div>
-
                     <div class="naver-captcha-nextCaptcha-wrapper">
-                        <button type="button" id="btnNextCaptcha">Refresh</button>
+                        <button type="button" id="btnNextCaptcha" class="gray-border">Refresh</button>
                     </div>
                 </div>
-
-
                 <div class="naver-captcha-form">
                     <input type="hidden" id="key" name="key">
-                    <input type="text" id="value" name="value">
+                    <input type="text" id="value" class="gray-border" name="value">
                     <button type="button" id="btnSendValidationCheck">전송</button>
                 </div>
             </div>
-            <div>
-                <button type="button" id="btnStart">시작</button>
-            </div>
-
+            <div id="start-btn-wrapper"></div>
+            <button type="button" id="btnStart">Test 시작</button>
         </section>
     </div>
 
@@ -63,6 +57,7 @@
     <script src="../static/js/firebase.js"></script>
     <script src="../static/js/firebaseIO.js"></script>
     <script src="../static/js/naverCaptcha.js"></script>
+    <script src="../static/js/main.js"></script>
     <script>
         checkDevice();
         document.getElementById('device').textContent = device;

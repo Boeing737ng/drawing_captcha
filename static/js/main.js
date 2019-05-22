@@ -6,6 +6,11 @@ $(document).ready(function () {
             window.location.href = "./";
         }
     );
+    $("#test_backward").click(
+        function () {
+            window.location.href = "main";
+        }
+    );
     $('#signup-btn').click(
         function () {
             window.location.href = "signup";
@@ -44,9 +49,21 @@ $(document).ready(function () {
             signOut();
         }
     );
+    $('#option-drawing').click(
+        function () {
+            window.location.href = "drawingCaptcha";
+        }
+    );
     $('#option-naver').click(
         function () {
             window.location.href = "captchaNaver";
+        }
+    );
+    $('#btnStart').click(
+        function() {
+            startTimeStamp = Date.now();
+            $('#btnStart').hide();
+            $('#start-btn-wrapper').hide();
         }
     );
 });
@@ -57,11 +74,9 @@ function checkDevice() {
         if (filter.indexOf(navigator.platform.toLowerCase()) < 0) {
             //mobile 
             device = 'mobile';
-            alert('mobile 접속');
         } else {
             //pc 
             device = 'PC';
-            alert('pc 접속');
         }
     }
 }

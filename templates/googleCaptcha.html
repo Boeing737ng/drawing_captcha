@@ -12,17 +12,23 @@
         <section class="signup-header">
             <p>GOOGLE RECAPTCHA v2</p>
         </section>
+        <div class="test-round-wrapper">
+                <div class="test-round-number-wrapper">
+                    <div id="current-round">0</div>
+                    <div>/50</div>
+                </div>
+            </div>
         <section class="signup-lower-box">
-            <!-- <div class="signup-wrapper">
-            </div> -->
             <div class="captcha-wrapper">
                 <br>
                 <div class="canvas-wrapper">
-                    <title>reCAPTCHA demo: Running both v2 and v3</title>
-                    <form action="URL: https://www.google.com/recaptcha/api/siteverify" method="POST">
-                        <div class="g-recaptcha" id="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
+                    <title>reCAPTCHA demo v2</title>
+                    <form action="javascript:alert(grecaptcha.getResponse(widgetId1));" method="POST">
+                        <div id="captcha" data-callback=""></div>
+                        <br>
                         <br/>
-                        <input type="submit" value="Submit">
+                        <button type="button" id="refreshCaptcha">Refresh</button>
+                        <button type="button" id="checkCaptcha">Check</button>
                     </form>
                 </div>
             </div>
@@ -36,5 +42,9 @@
     <script src="../static/js/captcha.js"></script>
     <script src="../static/js/main.js"></script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+        async defer>
+    </script>
+    <script src="../static/js/googleCaptcha.js"></script>
 </body>
 </html>
