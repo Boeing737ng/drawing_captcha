@@ -25,6 +25,9 @@ $(document).ready(function () {
         startTimeStamp = Date.now();
         // console.log("start: " + startTimeStamp);
     });
+    $("#btnSuccess").click(function(){
+        window.location.href = "main";
+    });
 });
 
 function validationCheck(sendData) {
