@@ -88,6 +88,8 @@ function doNextRound() {
     if (webRoundCount == 50) {
         $("#btnSendValidationCheck").attr("disabled", true);
         $("#btnNextCaptcha").attr("disabled", true);
+        alert("드로잉 캡차 50회를 완료하였습니다");
+        
     } else {
         $("#current-round").text(++webRoundCount);
         $("#value").val("");
