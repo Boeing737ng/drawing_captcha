@@ -1,13 +1,17 @@
 
-function storeCurrentTestResultToFirebase(device, failCount,timeTaken,len) {
+var len=0;
+function storeCurrentTestResultToFirebase(device, failCount,timeTaken, curCount) {
     var db = firebase.database();
     var ref = db.ref('users/' + getConvertedUserEmail(getSignInEmail()) + '/device/' + device);
     ref.update({
         "failCount": failCount
     }).then(function(){
-        if(len == 4) {
+        if(curCount == len) {
             alert("메인으로 돌아갑니다.");
+            
             window.location.href = "main"
+        }else{
+            console.log("cur len:"+len);
         }
     });
     if (timeTaken != "Failed") {
@@ -18,9 +22,12 @@ function storeCurrentTestResultToFirebase(device, failCount,timeTaken,len) {
 }
 function storeTestResultToFirebase(device, failCount, timeTakenArray) {
     // console.log(timeTakenArray);
+    len=timeTakenArray.length;
+    var curCount=1;
+    console.log(timeTakenArray.length);
     timeTakenArray.forEach(function(timeTaken){
         // console.log(device, failCount, timeTaken);
-        storeCurrentTestResultToFirebase(device, failCount,timeTaken, timeTakenArray.length);
+        storeCurrentTestResultToFirebase(device, failCount,timeTaken, curCount++ );
     });
     
 }

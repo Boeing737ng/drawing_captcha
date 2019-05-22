@@ -65,7 +65,6 @@ function validationCheck(sendData) {
                 //store in firebase
                 // storeCurrentTestResultToFirebase(device, webFailCount, timeTaken[webRoundCount]);
                 console.log("timeTaken: " + timeTaken);
-
                 doNextRound();
             }
             console.log("failCount:" + webFailCount);
@@ -110,10 +109,10 @@ function doNextRound() {
     if (webRoundCount == 9) {
         $("#btnSendValidationCheck").attr("disabled", true);
         $("#btnNextCaptcha").attr("disabled", true);
-        storeTestResultToFirebase(device, webFailCount, timeTaken);
-        
+        storeTestResultToFirebase(device, webFailCount, timeTaken);  
     } else {
-        $("#current-round").text(++webRoundCount);
+        webRoundCount=timeTaken.length;
+        $("#current-round").text(webRoundCount);
         $("#value").val("");
         getKeyAndRequestImage();
     }
