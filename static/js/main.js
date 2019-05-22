@@ -59,6 +59,13 @@ $(document).ready(function () {
             window.location.href = "captchaNaver";
         }
     );
+    $('#btnStart').click(
+        function() {
+            startTimeStamp = Date.now();
+            $('#btnStart').hide();
+            $('#start-btn-wrapper').hide();
+        }
+    );
 });
 
 function checkDevice() {

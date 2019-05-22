@@ -31,42 +31,32 @@
                     <p>아래 이미지를 보이는 대로 입력해 주세요</p>
                 </div>
                 <div class="naver-captcha-image-and-btn-wrapper">
-                    <div class="naver-captcha-image-wrapper">
+                    <div class="naver-captcha-image-wrapper gray-border">
                         <img src='static/captchaImage/captcha1558501417.jpg'>
                     </div>
-
                     <div class="naver-captcha-nextCaptcha-wrapper">
-                        <button type="button" id="btnNextCaptcha">Refresh</button>
+                        <button type="button" id="btnNextCaptcha" class="gray-border">Refresh</button>
                     </div>
                 </div>
-
-
                 <div class="naver-captcha-form">
                     <input type="hidden" id="key" name="key">
-                    <input type="text" id="value" name="value">
+                    <input type="text" id="value" class="gray-border" name="value">
                     <button type="button" id="btnSendValidationCheck">전송</button>
                 </div>
             </div>
-            <div>
-                <button type="button" id="btnStart">시작</button>
-            </div>
-
+            <div id="start-btn-wrapper"></div>
+            <button type="button" id="btnStart">Test 시작</button>
         </section>
     </div>
-
-
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-    <script src="../static/js/main.js"></script>
+    <script src="../static/js/firebase.js"></script>
     <script src="../static/js/naverCaptcha.js"></script>
+    <script src="../static/js/main.js"></script>
     <script>
         checkDevice();
-        firebase.auth().onAuthStateChanged(function (user) {
-            if (user) {
-                document.getElementById('user-email').textContent = getSignInEmail();
-            }
-        });
     </script>
 </body>
 
