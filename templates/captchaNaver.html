@@ -32,7 +32,7 @@
                 </div>
                 <div class="naver-captcha-image-and-btn-wrapper">
                     <div class="naver-captcha-image-wrapper">
-                        <!-- <img src='static/captchaImage/captcha1558369603.jpg'> -->
+                        <img src='static/captchaImage/captcha1558501417.jpg'>
                     </div>
 
                     <div class="naver-captcha-nextCaptcha-wrapper">
@@ -62,7 +62,6 @@
     <script src="../static/js/naverCaptcha.js"></script>
     <script>
         checkDevice();
-        document.getElementById('device').textContent = device;
         firebase.auth().onAuthStateChanged(function (user) {
             if (user) {
                 document.getElementById('user-email').textContent = getSignInEmail();
