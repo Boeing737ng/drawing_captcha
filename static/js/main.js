@@ -6,6 +6,11 @@ $(document).ready(function () {
             window.location.href = "./";
         }
     );
+    $("#test_backward").click(
+        function () {
+            window.location.href = "main";
+        }
+    );
     $('#signup-btn').click(
         function () {
             window.location.href = "signup";
