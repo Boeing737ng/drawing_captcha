@@ -103,14 +103,14 @@ button:hover {
     height: 70px;
     background-color: #4799F4;
 }
-.signup-header img {
+.signup-header img, #test_backward {
     z-index: 9999;
     position: absolute;
     width: 17px;
     bottom: 16px;
     left: 15px;
 }
-#backward:hover {
+#backward:hover, #test_backward:hover {
     cursor: pointer;
 }
 .signup-header p, .naver-captcha-header p{
