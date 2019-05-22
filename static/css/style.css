@@ -355,6 +355,17 @@ canvas {
     background-color: #8DC3F8;
 }
 
+/******************** Drawing Captcha test Page ********************/
+.captcha-test-wrapper {
+    position: absolute;
+    width: 80%;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translate(0,-50%);
+}
+
 /******************** Naver Captcha test Page ********************/
 .test-round-wrapper{
     /* border:3px solid blue; */
