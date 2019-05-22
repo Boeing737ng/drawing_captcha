@@ -1,62 +1,67 @@
 var device = "undefined";
 
-$(document).ready(function() {
+$(document).ready(function () {
     $("#backward").click(
-        function() {
+        function () {
             window.location.href = "./";
         }
     );
     $('#signup-btn').click(
-        function() {
+        function () {
             window.location.href = "signup";
         }
     );
     $('#start-captcha-btn').click(
-        function() {
+        function () {
             $('#start-captcha-btn').hide();
             $('#loading-text').show();
             start();
-        }   
+        }
     );
     $('#new-word').click(
-        function() {
+        function () {
             erase();
             displayMissionWord();
         }
     );
     $('#re-draw').click(
-        function() {
+        function () {
             erase();
-        }   
+        }
     );
     $('#signin-btn').click(
-        function() {
+        function () {
             signIn();
-        }   
+        }
     );
     $('#confirm-signup').click(
-        function() {
+        function () {
             signUp();
-        }   
+        }
     );
     $('#logout').click(
-        function() {
+        function () {
             signOut();
-        }   
+        }
+    );
+    $('#option-drawing').click(
+        function () {
+            window.location.href = "captchaNaver";
+        }
     );
 });
 
 function checkDevice() {
-    var filter = "win16|win32|win64|mac|macintel"; 
-    if ( navigator.platform ) { 
-        if ( filter.indexOf( navigator.platform.toLowerCase() ) < 0 ) { 
+    var filter = "win16|win32|win64|mac|macintel";
+    if (navigator.platform) {
+        if (filter.indexOf(navigator.platform.toLowerCase()) < 0) {
             //mobile 
             device = 'mobile';
-            alert('mobile 접속'); 
-        } else { 
+            alert('mobile 접속');
+        } else {
             //pc 
             device = 'PC';
-            alert('pc 접속'); 
-        } 
+            alert('pc 접속');
+        }
     }
 }
