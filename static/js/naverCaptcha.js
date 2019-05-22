@@ -92,7 +92,7 @@ function doNextRound() {
         $("#btnSendValidationCheck").attr("disabled", true);
         $("#btnNextCaptcha").attr("disabled", true);
         alert("드로잉 캡차 10회를 완료하였습니다");
-
+        window.location.href = "main";
     } else {
         $("#current-round").text(++webRoundCount);
         $("#value").val("");

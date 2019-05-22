@@ -44,7 +44,7 @@ $(document).ready(function () {
             signOut();
         }
     );
-    $('#option-drawing').click(
+    $('#option-naver').click(
         function () {
             window.location.href = "captchaNaver";
         }
