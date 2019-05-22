@@ -4,8 +4,8 @@ var startTimeStamp = 0;
 var endTimeStamp = 0;
 var timeTaken = [];
 
-var device = "undefined";
 //웹이랑 모바일이랑 카운터 분리해야함
+var device = "undefined";
 
 $(document).ready(function () {
     getKeyAndRequestImage();
@@ -27,10 +27,21 @@ $(document).ready(function () {
         startTimeStamp = Date.now();
         // console.log("start: " + startTimeStamp);
     });
-    $("#btnSuccess").click(function(){
+    $("#btnSuccess").click(function () {
         window.location.href = "main";
     });
+    // console.log(getSignInEmail());
+    // initialise();
 });
+
+// function initialise() {
+//     var snapshot='';
+//     firebase.auth().onAuthStateChanged(function (user) {
+//         if (user) {
+//             console.log(getCurrentTestResultToFirebase(device, getSignInEmail())); 
+//         }
+//     });
+// }
 
 function validationCheck(sendData) {
     $.ajax({
@@ -44,16 +55,17 @@ function validationCheck(sendData) {
                 endTimeStamp = Date.now();
                 timeTaken[webRoundCount] = endTimeStamp - startTimeStamp;
                 //store in firebase
-                storeCurrentTestResultToFirebase()
+                // storeCurrentTestResultToFirebase(device, webFailCount, timeTaken[webRoundCount]);
                 // console.log("end: " + endTimeStamp);
                 console.log("timeTaken: " + timeTaken);
                 doNextRound();
             } else {
-                timeTaken[webRoundCount]="Failed";
-                //store in firebase
-                storeCurrentTestResultToFirebase()
-                console.log("timeTaken: " + timeTaken);
+                timeTaken[webRoundCount] = "Failed";
                 webFailCount++;
+                //store in firebase
+                // storeCurrentTestResultToFirebase(device, webFailCount, timeTaken[webRoundCount]);
+                console.log("timeTaken: " + timeTaken);
+
                 doNextRound();
             }
             console.log("failCount:" + webFailCount);
@@ -61,9 +73,7 @@ function validationCheck(sendData) {
         }
     });
 }
-function storeCurrentTestResultToFirebase(){
 
-}
 
 function getKeyAndRequestImage() {
     $.ajax({
@@ -97,11 +107,11 @@ function getImage(sendKey) {
 }
 
 function doNextRound() {
-    if (webRoundCount == 10) {
+    if (webRoundCount == 9) {
         $("#btnSendValidationCheck").attr("disabled", true);
         $("#btnNextCaptcha").attr("disabled", true);
-        alert("드로잉 캡차 10회를 완료하였습니다");
-        window.location.href = "main";
+        storeTestResultToFirebase(device, webFailCount, timeTaken);
+        
     } else {
         $("#current-round").text(++webRoundCount);
         $("#value").val("");
