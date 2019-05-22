@@ -3,6 +3,8 @@ var webFailCount = 0;
 var startTimeStamp = 0;
 var endTimeStamp = 0;
 var timeTaken = [];
+
+var device = "undefined";
 //웹이랑 모바일이랑 카운터 분리해야함
 
 $(document).ready(function () {
@@ -41,11 +43,15 @@ function validationCheck(sendData) {
             if (data.result == true) {
                 endTimeStamp = Date.now();
                 timeTaken[webRoundCount] = endTimeStamp - startTimeStamp;
+                //store in firebase
+                storeCurrentTestResultToFirebase()
                 // console.log("end: " + endTimeStamp);
                 console.log("timeTaken: " + timeTaken);
                 doNextRound();
             } else {
                 timeTaken[webRoundCount]="Failed";
+                //store in firebase
+                storeCurrentTestResultToFirebase()
                 console.log("timeTaken: " + timeTaken);
                 webFailCount++;
                 doNextRound();
@@ -54,6 +60,9 @@ function validationCheck(sendData) {
             console.log("webRoundCount:" + webRoundCount);
         }
     });
+}
+function storeCurrentTestResultToFirebase(){
+
 }
 
 function getKeyAndRequestImage() {
@@ -100,4 +109,20 @@ function doNextRound() {
     }
     startTimeStamp = Date.now();
     // console.log("start: " + startTimeStamp);
+}
+
+
+function checkDevice() {
+    var filter = "win16|win32|win64|mac|macintel";
+    if (navigator.platform) {
+        if (filter.indexOf(navigator.platform.toLowerCase()) < 0) {
+            //mobile 
+            device = 'mobile';
+            alert('mobile 접속');
+        } else {
+            //pc 
+            device = 'PC';
+            alert('pc 접속');
+        }
+    }
 }

@@ -14,10 +14,11 @@
 <body>
     <div class="page-wrapper">
         <section class="naver-captcha-header">
+            <p class="device">device: <span id="device" class="bold"></span></p>
             <p>NAVER Captcha</p>
             <div>
                 <button type="button" id="btnSuccess">돌아가기</button>
-            </div> 
+            </div>
         </section>
         <section class="naver-captcha-lower-box">
             <div class="test-round-wrapper">
@@ -60,6 +61,15 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <script src="../static/js/main.js"></script>
     <script src="../static/js/naverCaptcha.js"></script>
+    <script>
+        checkDevice();
+        document.getElementById('device').textContent = device;
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (user) {
+                document.getElementById('user-email').textContent = getSignInEmail();
+            }
+        });
+    </script>
 </body>
 
 </html>
