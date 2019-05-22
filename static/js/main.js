@@ -44,6 +44,11 @@ $(document).ready(function () {
             signOut();
         }
     );
+    $('#option-drawing').click(
+        function () {
+            window.location.href = "drawingCaptcha";
+        }
+    );
     $('#option-naver').click(
         function () {
             window.location.href = "captchaNaver";
