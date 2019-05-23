@@ -55,7 +55,7 @@ function doNextRound(){
         $("#checkCaptcha").attr("disabled", true);
         storeTestResultToFirebase(typeOfCaptcha, device, webFailCount, timeTaken);
     } else {
-        $("#current-round").text(++webRoundCount);
+        $("#current-round").text(++webRoundCount + 1);
     }
     startTimeStamp = Date.now();
 }
