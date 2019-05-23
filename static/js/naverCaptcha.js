@@ -3,6 +3,7 @@ var webFailCount = 0;
 var startTimeStamp = 0;
 var endTimeStamp = 0;
 var timeTaken = [];
+var typeOfCaptcha="naver";
 
 //웹이랑 모바일이랑 카운터 분리해야함
 var device = "undefined";
@@ -109,7 +110,7 @@ function doNextRound() {
     if (webRoundCount == 9) {
         $("#btnSendValidationCheck").attr("disabled", true);
         $("#btnNextCaptcha").attr("disabled", true);
-        storeTestResultToFirebase(device, webFailCount, timeTaken);  
+        storeTestResultToFirebase(typeOfCaptcha, device, webFailCount, timeTaken);  
     } else {
         webRoundCount=timeTaken.length;
         $("#current-round").text(webRoundCount);
