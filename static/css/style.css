@@ -469,3 +469,17 @@ canvas {
     top: 50%;
     transform: translate(0, -50%);
 }
+/******************** Admin & Stats Page ********************/
+#stats-btn {
+    position: absolute;
+    bottom: 100px;
+    left: 0;
+    right: 0;
+    width: 80%;
+    height: 35px;
+    margin: auto;
+    border: none;
+    background-color: #4799F4;
+    border-radius: 50px;
+    color: #FFFFFF;
+}
