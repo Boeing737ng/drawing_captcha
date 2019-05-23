@@ -8,8 +8,12 @@ function storeCurrentTestResultToFirebase(captchaType,device, failCount,timeTake
         "failCount": failCount
     }).then(function(){
         if(curCount == len) {
-            alert("메인으로 돌아갑니다.");
-            window.location.href = "main"
+            if(device == "PC") {
+                console.log("PC");
+                updateDeviceCount("PC");
+            } else {
+                updateDeviceCount("mobile");
+            }
         }else{
             console.log("cur len:"+len);
         }
@@ -29,6 +33,22 @@ function storeTestResultToFirebase(captchaType,device, failCount, timeTakenArray
         // console.log(device, failCount, timeTaken);
         storeCurrentTestResultToFirebase(captchaType, device, failCount,timeTaken, curCount++ );
     });  
+}
+function updateDeviceCount(device) {
+    var deviceCount;
+    var deviceRef = firebase.database().ref('deviceCount/' + device + '/count/');
+    var updateRef = firebase.database().ref('deviceCount/' + device);
+    deviceRef.once('value', function(count) {
+        console.log(count.val());
+        deviceCount = count.val() + 1;
+        console.log(deviceCount);
+    }).then(function() {
+        updateRef.update({
+            'count': deviceCount
+        })
+        alert("메인으로 돌아갑니다.");
+        window.location.href = "main"
+    });
 }
 
 // function getCurrentTestResultToFirebase(device, email) {
