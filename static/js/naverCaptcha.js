@@ -5,7 +5,8 @@ var endTimeStamp = 0;
 var timeTaken = [];
 var typeOfCaptcha="naver";
 // var URL='http://127.0.0.1:5000/';
-var URL='http://0.0.0.0:80/';
+// var URL='http://0.0.0.0:80/';
+var URL='http://13.209.6.91:80/';
 
 //웹이랑 모바일이랑 카운터 분리해야함
 var device = "undefined";
