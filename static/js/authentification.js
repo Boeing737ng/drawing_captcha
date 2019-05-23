@@ -3,7 +3,11 @@ function signIn() {
     var password = getLoginPassword();
     firebase.auth().signInWithEmailAndPassword(email, password)
         .then(function (success) {
-            window.location.href = "main";
+            if(email == "admin@admin.com") {
+                window.location.href = "admin";
+            } else {
+                window.location.href = "main";
+            }
         })
         .catch(function (error) {
             // Handle Errors.

@@ -1,13 +1,17 @@
 
-function storeCurrentTestResultToFirebase(device, failCount,timeTaken,len) {
+var len=0;
+
+function storeCurrentTestResultToFirebase(captchaType,device, failCount,timeTaken, curCount) {
     var db = firebase.database();
-    var ref = db.ref('users/' + getConvertedUserEmail(getSignInEmail()) + '/device/' + device);
+    var ref = db.ref('users/' + getConvertedUserEmail(getSignInEmail()) +'/type/'+captchaType +'/device/' + device);
     ref.update({
         "failCount": failCount
     }).then(function(){
-        if(len == 4) {
+        if(curCount == len) {
             alert("메인으로 돌아갑니다.");
             window.location.href = "main"
+        }else{
+            console.log("cur len:"+len);
         }
     });
     if (timeTaken != "Failed") {
@@ -16,13 +20,15 @@ function storeCurrentTestResultToFirebase(device, failCount,timeTaken,len) {
         newTime.set(timeTaken);
     }
 }
-function storeTestResultToFirebase(device, failCount, timeTakenArray) {
+function storeTestResultToFirebase(captchaType,device, failCount, timeTakenArray) {
     // console.log(timeTakenArray);
+    len=timeTakenArray.length;
+    var curCount=1;
+    console.log(timeTakenArray.length);
     timeTakenArray.forEach(function(timeTaken){
         // console.log(device, failCount, timeTaken);
-        storeCurrentTestResultToFirebase(device, failCount,timeTaken, timeTakenArray.length);
-    });
-    
+        storeCurrentTestResultToFirebase(captchaType, device, failCount,timeTaken, curCount++ );
+    });  
 }
 
 // function getCurrentTestResultToFirebase(device, email) {

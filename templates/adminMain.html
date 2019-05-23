@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ADMIN</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+    <div class="page-wrapper">
+        <section class="main-upper-box">
+            <p class="device">device: <span id="device" class="bold"></span></p>
+            <img id="logout" src="../static/images/logout.png" alt="">
+            <img class="profile" src="../static/images/profile.png" alt="">
+            <p id="user-email">Admin</p>
+        </section>
+        <section class="option-wrapper">
+            <button id="stats-btn">VIEW STATISTICS</button>
+        </section>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../static/js/firebase.js"></script>
+    <script src="../static/js/authentification.js"></script>
+    <script src="../static/js/main.js"></script>
+    <script>
+        checkDevice();
+        document.getElementById('device').textContent = device;
+    </script>
+</body>
+</html>
