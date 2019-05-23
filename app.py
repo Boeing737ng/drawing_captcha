@@ -32,6 +32,10 @@ def googleCaptcha():
 def captchaNaver():
     return render_template('captchaNaver.html')
 
+@app.route('/admin')
+def admin():
+    return render_template('adminMain.html')
+
 @app.route('/captchaNaverGetKey', methods=['POST'])
 def captchaNaverGetKey():
     client_id = NAVER_CAPTCHA_KEY.get_client_id()

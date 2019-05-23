@@ -483,3 +483,51 @@ canvas {
     border-radius: 50px;
     color: #FFFFFF;
 }
+.stats-page-wrapper {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border: 1px solid #000000;
+    width: 900px;
+    padding: 30px;
+    height: fit-content;
+}
+.main-info p, .main-info span {
+    color: #4799F4;
+}
+.stats-header {
+    font-size: 35px;
+    margin-top: 15px;
+}
+.desc-header {
+    font-size: 25px;
+    margin: 0;
+}
+.desc-text {
+    font-size: 15px;
+    margin: 0;
+}
+.stats-description-wrapper {
+
+}
+.participants-count-wrapper {
+    margin: 20px;
+    width: fit-content;
+}
+.participants-count-wrapper span {
+    display: block;
+}
+.mobile-count-wrapper, .browser-count-wrapper {
+    width: fit-content;
+    display: inline-block;
+    text-align: center;
+    padding: 15px;
+}
+#mobile-count, #browser-count {
+    font-size: 40px;
+}
+.device-text {
+    font-size: 20px;
+}
