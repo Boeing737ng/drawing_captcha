@@ -5,15 +5,14 @@ var webFailCount = 0;
 var endTimeStamp = 0;
 var timeTaken = [];
 
+var device = "undefined";
+
 var verifyCallback = function(response) {
     alert(response);
 };
 
 var widgetId1;
-var widgetId2;
 var onloadCallback = function() {
-// Renders the HTML element with id 'example1' as a reCAPTCHA widget.
-// The id of the reCAPTCHA widget is assigned to 'widgetId1'.
 widgetId1 = grecaptcha.render('captcha', {
     'sitekey' : '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI',
     'theme' : 'light'
@@ -48,12 +47,26 @@ $(document).ready(function() {
 });
 
 function doNextRound(){
-    if (webRoundCount == 50) {
+    if (webRoundCount == 9) {
         $("#captcha").attr("disabled", true);
         $("#refreshCaptcha").attr("disabled", true);
         $("#checkCaptcha").attr("disabled", true);
+        storeTestResultToFirebase(device, webFailCount, timeTaken);
     } else {
         $("#current-round").text(++webRoundCount);
     }
     startTimeStamp = Date.now();
+}
+
+function checkDevice() {
+    var filter = "win16|win32|win64|mac|macintel";
+    if (navigator.platform) {
+        if (filter.indexOf(navigator.platform.toLowerCase()) < 0) {
+            //mobile 
+            device = 'mobile';
+        } else {
+            //pc 
+            device = 'PC';
+        }
+    }
 }
