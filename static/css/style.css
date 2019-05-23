@@ -367,9 +367,6 @@ canvas {
 }
 
 /******************** Naver Captcha test Page ********************/
-.test-round-wrapper{
-    /* border:3px solid blue; */
-}
 .naver-captcha-wrapper{
     /* border:3px solid black; */
     background-color:	#f4f0f0;
@@ -508,9 +505,6 @@ canvas {
 .desc-text {
     font-size: 15px;
     margin: 0;
-}
-.stats-description-wrapper {
-
 }
 .participants-count-wrapper {
     margin: 20px;
