@@ -12,6 +12,8 @@ var current_round = 0;
 var start_time;
 var result_list = [];
 var setTimer;
+var failCount = 0;
+var device = "undefined";
 
 /*
 prepare the drawing canvas 
@@ -152,7 +154,7 @@ function startTimer(time) {
 function getTakenTime() {
     var end_time = getCurrentTime();
     var time_taken = end_time - start_time;
-    result_list[current_round] = time_taken;
+    result_list.push(time_taken);
 }
 
 function goToNextRound(result) {
@@ -162,22 +164,21 @@ function goToNextRound(result) {
         console.log("Round " + (current_round+1) + " success");
     } else {
         console.log("Round " + (current_round+1) + " Failed");
-        result_list[current_round] = "failed";
+        //result_list[current_round] = "failed";
+        failCount++;
     }
     if(current_round == 9) {
         console.log("Test finished");
-        if(confirm("테스트가 종료되었습니다. 이전 화면으로 돌아가시겠습니까?")) {
-            window.location.href = "main";
-        } else {
-            window.location.href = "main";
-        }
+        console.log(failCount);
+        console.log(result_list);
+        storeTestResultToFirebase("drawing", device, failCount, result_list);
         return;
     }
     current_round++;
     erase();
     displayMissionWord();
     start_time = getCurrentTime();
-    startTimer(3);
+    startTimer(5);
     var rount_text = document.getElementById("current-round").textContent;
     document.getElementById("current-round").textContent = parseInt(rount_text) + 1;
 }
@@ -286,7 +287,7 @@ function preprocess(imgData) {
 load the model
 */
 async function start() {
-    
+    checkDevice();
     //load the model 
     model = await tf.loadModel('../static/model_cnn/model.json')
     
@@ -299,7 +300,7 @@ async function start() {
     //load the class names
     await loadDict()
     start_time = getCurrentTime();
-    startTimer(3);
+    startTimer(5);
 }
 
 /*
@@ -333,4 +334,17 @@ function erase() {
     canvas.clear();
     canvas.backgroundColor = '#ffffff';
     coords = [];
+}
+
+function checkDevice() {
+    var filter = "win16|win32|win64|mac|macintel";
+    if (navigator.platform) {
+        if (filter.indexOf(navigator.platform.toLowerCase()) < 0) {
+            //mobile 
+            device = 'mobile';
+        } else {
+            //pc 
+            device = 'PC';
+        }
+    }
 }
