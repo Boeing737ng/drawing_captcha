@@ -11,7 +11,7 @@
 
 ## Download Fabric.js
   #### 0. Download required file
-    - fabricjs : https://cdnjs.cloudflare.com/ajax/libs/fabric.js/2.3.4/fabric.min.js
+    - fabricjs : https://cdnjs.cloudflare.com/ajax/libs/fabric.js/2.3.4/fabric.js
     - right click and download as fabric.js
   #### 1. Copy the file
     - Copy and Paste the file into our project "static/js/"
