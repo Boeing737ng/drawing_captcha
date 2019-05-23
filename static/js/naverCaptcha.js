@@ -4,6 +4,8 @@ var startTimeStamp = 0;
 var endTimeStamp = 0;
 var timeTaken = [];
 var typeOfCaptcha="naver";
+// var URL='http://127.0.0.1:5000/';
+var URL='http://0.0.0.0:80/';
 
 //웹이랑 모바일이랑 카운터 분리해야함
 var device = "undefined";
@@ -47,7 +49,7 @@ $(document).ready(function () {
 function validationCheck(sendData) {
     $.ajax({
         type: "POST",
-        url: "http://127.0.0.1:5000/captchaNaverValidationCheck",
+        url: URL+"captchaNaverValidationCheck",
         data: sendData,
         dataType: "json",
         success: function (data) {
@@ -78,7 +80,7 @@ function validationCheck(sendData) {
 function getKeyAndRequestImage() {
     $.ajax({
         type: "POST",
-        url: "http://127.0.0.1:5000/captchaNaverGetKey",
+        url: URL+"captchaNaverGetKey",
         dataType: "json",
         success: function (data) {
             // console.log(data);
@@ -95,7 +97,7 @@ function getKeyAndRequestImage() {
 function getImage(sendKey) {
     $.ajax({
         type: "POST",
-        url: "http://127.0.0.1:5000/captchaNaverGetImage",
+        url: URL+"captchaNaverGetImage",
         data: sendKey,
         dataType: "json",
         success: function (result) {
