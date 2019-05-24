@@ -4,14 +4,15 @@
 
 ## Download Paper.js
   #### 0. Download required file 
-    - paperjs-v0.11.5.zip : http://paperjs.org/download/
+    - paperjs-v0.11.5.zip : [Download Link](http://paperjs.org/download/)
+    - right click and download as paperjs-v0.11.5.zip
   #### 1. Copy the file
     - Copy "paper-core.js" from "paperjs-v0.11.5/dist/"
     - Paste the file into our project "static/js/"
 
 ## Download Fabric.js
   #### 0. Download required file
-    - fabricjs : https://cdnjs.cloudflare.com/ajax/libs/fabric.js/2.3.4/fabric.js
+    - fabricjs : [Download Link](https://cdnjs.cloudflare.com/ajax/libs/fabric.js/2.3.4/fabric.js)
     - right click and download as fabric.js
   #### 1. Copy the file
     - Copy and Paste the file into our project "static/js/"
@@ -21,7 +22,7 @@
     - $ git clone https://github.com/Boeing737ng/drawing_captcha.git
 
   #### 1. Install python3.6v
-    - python3.6v : https://www.python.org/downloads/
+    - python3.6v : [Download Link](https://www.python.org/downloads/)
 
   #### 2. Create virtual environments
     - $ python -m venv ./
@@ -47,7 +48,7 @@
     - $ cd drawing_captcha
 
   #### 1. Install python3.6v
-    - python3.6v : https://www.python.org/downloads/
+    - python3.6v : [Download Link](https://www.python.org/downloads/)
 
   #### 2. Create virtual environments
     - $ python3 -m venv ./
