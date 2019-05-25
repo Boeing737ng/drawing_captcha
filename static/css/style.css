@@ -121,7 +121,7 @@ button:hover {
     width: 100%;
     font-size: 15px;
 }
-.signup-lower-box, .naver-captcha-lower-box {
+.signup-lower-box, .naver-captcha-lower-box, .google-captcha-lower-box {
     position: relative;
     width: 100%;
     height: calc(100% - 70px);
@@ -466,6 +466,43 @@ canvas {
     top: 50%;
     transform: translate(0, -50%);
 }
+
+/******************** Google Captcha test Page ********************/
+.google-captcha-wrapper{
+    /* border:3px solid black; */
+    background-color:	#f4f0f0;
+    padding:10px;
+}
+
+.google-captcha-wrapper p{
+    font-size:12px;
+    margin:0;
+}
+
+.googleCaptcha-center{
+    position: absolute;
+    margin: auto;
+    width:90%;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translate(0, -50%);
+}
+
+#refreshCaptcha, #checkCaptcha {
+    background-color: #4799F4;
+    border: none;
+    color: #FFFFFF;
+    margin: 10px;
+    width: 50%;
+    height: 30px;
+    border-radius: 40px;
+}
+
+.google-captcha-form{
+    text-align: center;
+}
+
 /******************** Admin & Stats Page ********************/
 #stats-btn {
     position: absolute;

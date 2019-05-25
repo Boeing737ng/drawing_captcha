@@ -59,6 +59,12 @@ $(document).ready(function () {
             window.location.href = "captchaNaver";
         }
     );
+
+    $('#option-recaptcha').click(
+        function () {
+            window.location.href = "googleCaptcha";
+        }
+    );
     $('#btnStart').click(
         function() {
             startTimeStamp = Date.now();

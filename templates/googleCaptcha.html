@@ -11,27 +11,33 @@
     <div class="page-wrapper">
         <section class="signup-header">
             <p>GOOGLE RECAPTCHA v2</p>
+            <div>
+                <img id="test_backward" src="../static/images/back_arrow.png" alt="">
+            </div>
         </section>
-        <div class="test-round-wrapper">
+        <section class="google-captcha-lower-box">
+            <div class="test-round-wrapper">
                 <div class="test-round-number-wrapper">
-                    <div id="current-round">0</div>
-                    <div>/50</div>
+                    <div id="current-round">1</div>
+                    <div>/10</div>
                 </div>
             </div>
-        <section class="signup-lower-box">
-            <div class="captcha-wrapper">
-                <br>
-                <div class="canvas-wrapper">
-                    <title>reCAPTCHA demo v2</title>
+            <div class="google-captcha-wrapper googleCaptcha-center">
+                <div>
+                    <p>아래 "로봇이 아닙니다."를 체크한 후 전송 버튼을 눌러주세요.</p>
+                    <br>
+                </div>
+                <div class="google-captcha-form">
                     <form action="javascript:alert(grecaptcha.getResponse(widgetId1));" method="POST">
                         <div id="captcha" data-callback=""></div>
                         <br>
-                        <br/>
                         <button type="button" id="refreshCaptcha">Refresh</button>
-                        <button type="button" id="checkCaptcha">Check</button>
+                        <button type="button" id="checkCaptcha">전송</button>
                     </form>
                 </div>
             </div>
+            <div id="start-btn-wrapper"></div>
+            <button type="button" id="btnStart">Test 시작</button>
         </section>
     </div>
     <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
@@ -44,10 +50,10 @@
     <script src="../static/js/firebaseIO.js"></script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+    <script src="../static/js/googleCaptcha.js"></script>
     <script>
         checkDevice();
         document.getElementById('device').textContent = device;
     </script>
-    <script src="../static/js/googleCaptcha.js"></script>
 </body>
 </html>

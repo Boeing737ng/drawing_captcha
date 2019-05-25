@@ -4,6 +4,8 @@ var webRoundCount = 0;
 var webFailCount = 0;
 var endTimeStamp = 0;
 var timeTaken = [];
+var typeOfCaptcha = "google";
+var URL='http://13.209.6.91:80/';
 
 var device = "undefined";
 
@@ -51,9 +53,9 @@ function doNextRound(){
         $("#captcha").attr("disabled", true);
         $("#refreshCaptcha").attr("disabled", true);
         $("#checkCaptcha").attr("disabled", true);
-        storeTestResultToFirebase(device, webFailCount, timeTaken);
+        storeTestResultToFirebase(typeOfCaptcha, device, webFailCount, timeTaken);
     } else {
-        $("#current-round").text(++webRoundCount);
+        $("#current-round").text(++webRoundCount + 1);
     }
     startTimeStamp = Date.now();
 }
