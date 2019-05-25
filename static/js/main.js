@@ -66,6 +66,9 @@ $(document).ready(function () {
             $('#start-btn-wrapper').hide();
         }
     );
+    $('#stats-btn').click(function() {
+        window.location.href = "statistics";
+    })
 });
 
 function checkDevice() {

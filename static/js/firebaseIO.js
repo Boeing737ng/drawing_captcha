@@ -85,3 +85,19 @@ function writeUserData(userId, name, email, imageUrl) {
 String.prototype.replaceAt = function (index, replacement) {
     return this.substr(0, index) + replacement + this.substr(index + replacement.length);
 }
+
+function getDeviceCountFromDB() {
+    firebase.database().ref('deviceCount/PC/count/').once('value', function(count) {
+        document.getElementById('browser-count').textContent = count.val();
+    }).then(function() {
+        firebase.database().ref('deviceCount/mobile/count/').once('value', function(count) {
+            document.getElementById('mobile-count').textContent = count.val();
+        })
+    });
+}
+
+function getUserList() {
+    firebase.database().ref('users/').once('child_removed', function(count) {
+        console.log(count.key);
+    })
+}

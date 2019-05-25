@@ -35,6 +35,10 @@ def captchaNaver():
 @app.route('/admin')
 def admin():
     return render_template('adminMain.html')
+@app.route('/statistics')
+def statistics():
+    return render_template('statistics.html')
+
 
 @app.route('/captchaNaverGetKey', methods=['POST'])
 def captchaNaverGetKey():
