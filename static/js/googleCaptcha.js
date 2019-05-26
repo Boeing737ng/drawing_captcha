@@ -1,4 +1,3 @@
-var checked = false;
 var startTimeStamp = 0;
 var webRoundCount = 0;
 var webFailCount = 0;
@@ -8,10 +7,6 @@ var typeOfCaptcha = "google";
 var URL='http://13.209.6.91:80/';
 
 var device = "undefined";
-
-var verifyCallback = function(response) {
-    alert(response);
-};
 
 var widgetId1;
 var onloadCallback = function() {
