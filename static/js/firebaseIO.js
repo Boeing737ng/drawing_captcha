@@ -10,9 +10,12 @@ var pc_naver_fail_json = [];
 var pc_google_time_json = [];
 var pc_google_fail_json = [];
 
-var mobile_drawing_json = [];
-var mobile_naver_json = [];
-var mobile_google_json = [];
+var mobile_drawing_time_json = [];
+var mobile_drawing_fail_json = [];
+var mobile_naver_time_json = [];
+var mobile_naver_fail_json = [];
+var mobile_google_time_json = [];
+var mobile_google_fail_json = [];
 
 function storeCurrentTestResultToFirebase(captchaType,device, failCount,timeTaken, curCount) {
     var db = firebase.database();
@@ -134,7 +137,8 @@ function getUserUserTestData(user, type) {
     });
 }
 
-function setJsonData(user, type, data, device) {
+function setJsonData(email, type, data, device) {
+    user = email.substring(0, email.lastIndexOf("@"));
     var avgTime = 0;
     if(data.val() != null) {
         var failCount = data.val().failCount;
@@ -161,19 +165,27 @@ function createDrawingJson(user, time, failCount, device) {
     if(device == 'PC') {
         pc_drawing_time_json.push({"user": user, "value": time});
         pc_drawing_fail_json.push({"user": user, "failed": failCount});
-        console.log(pc_drawing_fail_json)
+    } else {
+        mobile_drawing_time_json.push({"user": user, "value": time});
+        mobile_drawing_fail_json.push({"user": user, "failed": failCount});
     }
 }
 function createNaverJson(user, time, failCount, device) {
     if(device == 'PC') {
         pc_naver_time_json.push({"user": user, "value": time});
         pc_naver_fail_json.push({"user": user, "failed": failCount});
+    } else {
+        mobile_naver_time_json.push({"user": user, "value": time});
+        mobile_naver_fail_json.push({"user": user, "failed": failCount});
     }
 }
 function createGoogleJson(user, time, failCount, device) {
     if(device == 'PC') {
         pc_google_time_json.push({"user": user, "value": time});
         pc_google_fail_json.push({"user": user, "failed": failCount});
+    } else {
+        mobile_google_time_json.push({"user": user, "value": time});
+        mobile_google_fail_json.push({"user": user, "failed": failCount});
     }
 }
 function createGraph() {
@@ -184,6 +196,13 @@ function createGraph() {
     createPCNaverFailGraph(pc_naver_fail_json);
     createPCGoogleGraph(pc_google_time_json);
     createPCGoogleFailGraph(pc_google_fail_json);
+    
+    createMobileDrawingGraph(mobile_drawing_time_json);
+    createMobileDrawingFailGraph(mobile_drawing_fail_json);
+    createMobileNaverGraph(mobile_naver_time_json);
+    createMobileNaverFailGraph(mobile_naver_fail_json);
+    createMobileGoogleGraph(mobile_google_time_json);
+    createMobileGoogleFailGraph(mobile_google_fail_json);
 }
 function run() {
     showLoading();

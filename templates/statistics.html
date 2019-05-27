@@ -28,7 +28,7 @@
             </div>
         </section>
         <section class="graph-section">
-            <div class="mobile-stats">
+            <div class="pc-stats">
                 <p class="desc-header bold">PC</p>
                 <div class="stats-wrapper">
                     <p class="captcha-type">- Drawing Captcha</p>
@@ -51,11 +51,30 @@
                     <p class="graph-header">Fail counts</p>
                     <div id="pc-google-fail-graph" class="graph"></div>
                 </div>
-                <div class="naver-stats-wrapper"></div>
-                <div class="google-stats-wrapper"></div>
             </div>
-            <div class="pc-stats">
+            <div class="mobile-stats">
                 <p class="desc-header bold">Mobile</p>
+                <div class="stats-wrapper">
+                    <p class="captcha-type">- Drawing Captcha</p>
+                    <p class="graph-header">Average time taken</p>
+                    <div id="mobile-drawing-time-graph" class="graph"></div>
+                    <p class="graph-header">Fail counts</p>
+                    <div id="mobile-drawing-fail-graph" class="graph"></div>
+                </div>
+                <div class="stats-wrapper">
+                    <p class="captcha-type">- Naver Captcha</p>
+                    <p class="graph-header">Average time taken</p>
+                    <div id="mobile-naver-time-graph" class="graph"></div>
+                    <p class="graph-header">Fail counts</p>
+                    <div id="mobile-naver-fail-graph" class="graph"></div>
+                </div>
+                <div class="stats-wrapper">
+                    <p class="captcha-type">- Google Captcha</p>
+                    <p class="graph-header">Average time taken</p>
+                    <div id="mobile-google-time-graph" class="graph"></div>
+                    <p class="graph-header">Fail counts</p>
+                    <div id="mobile-google-fail-graph" class="graph"></div>
+                </div>
             </div>
             <div></div>
         </section>
@@ -72,6 +91,8 @@
     <script src="../static/js/firebase.js"></script>
     <script src="../static/js/pc_time_graph.js"></script>
     <script src="../static/js/pc_fail_graph.js"></script>
+    <script src="../static/js/mobile_time_graph.js"></script>
+    <script src="../static/js/mobile_fail_graph.js"></script>
     <script src="../static/js/firebaseIO.js"></script>
     <script src="../static/js/main.js"></script>
     <script>
