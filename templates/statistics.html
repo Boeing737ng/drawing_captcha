@@ -26,11 +26,41 @@
                 </div>
             </div>
         </section>
-        <section class="graph-section"></section>
+        <section class="graph-section">
+            <div class="mobile-stats">
+                <p class="desc-header bold">PC</p>
+                <div class="stats-wrapper">
+                    <p>Drawing Captcha</p>
+                    <div id="pc-drawing-time-graph" class="graph"></div>
+                    <div id="pc-drawing-fail-graph" class="graph"></div>
+                </div>
+                <div class="stats-wrapper">
+                    <p>Naver Captcha</p>
+                    <div id="pc-naver-time-graph" class="graph"></div>
+                    <div id="pc-naver-fail-graph" class="graph"></div>
+                </div>
+                <div class="stats-wrapper">
+                    <p>Google Captcha</p>
+                    <div id="pc-google-time-graph" class="graph"></div>
+                    <div id="pc-google-fail-graph" class="graph"></div>
+                </div>
+                <div class="naver-stats-wrapper"></div>
+                <div class="google-stats-wrapper"></div>
+            </div>
+            <div class="pc-stats">
+                <p class="desc-header bold">Mobile</p>
+            </div>
+            <div></div>
+        </section>
     </div>
+    <script src="https://www.amcharts.com/lib/4/core.js"></script>
+    <script src="https://www.amcharts.com/lib/4/charts.js"></script>
+    <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="../static/js/firebase.js"></script>
+    <script src="../static/js/pc_time_graph.js"></script>
+    <script src="../static/js/pc_fail_graph.js"></script>
     <script src="../static/js/firebaseIO.js"></script>
     <script src="../static/js/main.js"></script>
     <script>

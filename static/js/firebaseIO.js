@@ -1,5 +1,18 @@
 
 var len=0;
+var userList = [];
+var deviceArray = ["PC", "mobile"];
+
+var pc_drawing_time_json = [];
+var pc_drawing_fail_json = [];
+var pc_naver_time_json = [];
+var pc_naver_fail_json = [];
+var pc_google_time_json = [];
+var pc_google_fail_json = [];
+
+var mobile_drawing_json = [];
+var mobile_naver_json = [];
+var mobile_google_json = [];
 
 function storeCurrentTestResultToFirebase(captchaType,device, failCount,timeTaken, curCount) {
     var db = firebase.database();
@@ -96,8 +109,87 @@ function getDeviceCountFromDB() {
     });
 }
 
-function getUserList() {
-    firebase.database().ref('users/').once('child_removed', function(count) {
-        console.log(count.key);
-    })
+function getCaptchaData() {
+    firebase.database().ref('users/').once('value', function(userListFromDB) {
+        userList = Object.keys(userListFromDB.val());
+        //console.log(snapshot.val());
+        userListFromDB.forEach((user) => {
+            //console.log(child.key)
+            firebase.database().ref('users/' + user.key + '/type').once('value', function(type) {
+                type.forEach((data) => {
+                    getUserUserTestData(user.key, data.key);
+                })
+            })
+        })
+    });
 }
+
+function getUserUserTestData(user, type) {
+    firebase.database().ref('users/' + user + '/type/' + type + '/device/PC').once('value', function(data) {
+        setJsonData(user, type, data, 'PC');
+    }).then(function() {
+        firebase.database().ref('users/' + user + '/type/' + type + '/device/mobile').once('value', function(data) {
+            setJsonData(user, type, data, 'mobile');
+        })
+    });
+}
+
+function setJsonData(user, type, data, device) {
+    var avgTime = 0;
+    if(data.val() != null) {
+        var failCount = data.val().failCount;
+        if(failCount != 10) {
+            var totalTime = 0;
+            var timeCount = 0;
+            for(key in data.val().time) {
+                totalTime += data.val().time[key];
+                timeCount++;
+            }
+            avgTime = Math.trunc(totalTime / timeCount);
+        }
+        if(type == 'drawing') {
+            createDrawingJson(user, avgTime, failCount, device);
+        } else if(type == 'naver') {
+            createNaverJson(user, avgTime, failCount, device);
+        } else {
+            createGoogleJson(user, avgTime, failCount, device);
+        }
+    }
+}
+
+function createDrawingJson(user, time, failCount, device) {
+    if(device == 'PC') {
+        pc_drawing_time_json.push({"user": user, "value": time});
+        pc_drawing_fail_json.push({"user": user, "failed": failCount});
+        console.log(pc_drawing_fail_json)
+    }
+}
+function createNaverJson(user, time, failCount, device) {
+    if(device == 'PC') {
+        pc_naver_time_json.push({"user": user, "value": time});
+        pc_naver_fail_json.push({"user": user, "failed": failCount});
+    }
+}
+function createGoogleJson(user, time, failCount, device) {
+    if(device == 'PC') {
+        pc_google_time_json.push({"user": user, "value": time});
+        pc_google_fail_json.push({"user": user, "failed": failCount});
+    }
+}
+function createGraph() {
+    console.log("JSON OBTAINED!!!")
+    createPCDrawingGraph(pc_drawing_time_json);
+    createPCDrawingFailGraph(pc_drawing_fail_json);
+    createPCNaverGraph(pc_naver_time_json);
+    createPCNaverFailGraph(pc_naver_fail_json);
+    createPCGoogleGraph(pc_google_time_json);
+    createPCGoogleFailGraph(pc_google_fail_json);
+}
+function run() {
+    getCaptchaData();
+    setTimeout(
+        function() {
+            createGraph()
+        }, 5000);
+}
+run();
