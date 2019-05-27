@@ -12,7 +12,6 @@ function createPCDrawingGraph(data) {
     // Create axes
     var categoryAxis = mobile_drawing.xAxes.push(new am4charts.CategoryAxis());
     categoryAxis.dataFields.category = "user";
-    categoryAxis.title.text = "User";
     
     // Create value axis
     var valueAxis = mobile_drawing.yAxes.push(new am4charts.ValueAxis());
@@ -48,7 +47,6 @@ function createPCNaverGraph(data) {
     // Create axes
     var categoryAxis = mobile_drawing.xAxes.push(new am4charts.CategoryAxis());
     categoryAxis.dataFields.category = "user";
-    categoryAxis.title.text = "User";
     
     // Create value axis
     var valueAxis = mobile_drawing.yAxes.push(new am4charts.ValueAxis());
@@ -84,7 +82,6 @@ function createPCGoogleGraph(data) {
     // Create axes
     var categoryAxis = mobile_drawing.xAxes.push(new am4charts.CategoryAxis());
     categoryAxis.dataFields.category = "user";
-    categoryAxis.title.text = "User";
     
     // Create value axis
     var valueAxis = mobile_drawing.yAxes.push(new am4charts.ValueAxis());
