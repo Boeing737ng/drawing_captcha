@@ -21,14 +21,14 @@ function createPCDrawingGraph(data) {
     lineSeries.dataFields.valueY = "value";
     lineSeries.dataFields.categoryX = "user";
     lineSeries.name = "Sales";
-    lineSeries.strokeWidth = 3;
+    lineSeries.strokeWidth = 2;
     
     // Add simple bullet
     var bullet = lineSeries.bullets.push(new am4charts.Bullet());
     var image = bullet.createChild(am4core.Image);
     image.href = "https://www.amcharts.com/lib/images/star.svg";
-    image.width = 30;
-    image.height = 30;
+    image.width = 10;
+    image.height = 10;
     image.horizontalCenter = "middle";
     image.verticalCenter = "middle";
 }
@@ -56,14 +56,14 @@ function createPCNaverGraph(data) {
     lineSeries.dataFields.valueY = "value";
     lineSeries.dataFields.categoryX = "user";
     lineSeries.name = "Sales";
-    lineSeries.strokeWidth = 3;
+    lineSeries.strokeWidth = 2;
     
     // Add simple bullet
     var bullet = lineSeries.bullets.push(new am4charts.Bullet());
     var image = bullet.createChild(am4core.Image);
     image.href = "https://www.amcharts.com/lib/images/star.svg";
-    image.width = 30;
-    image.height = 30;
+    image.width = 10;
+    image.height = 10;
     image.horizontalCenter = "middle";
     image.verticalCenter = "middle";
 }
@@ -91,14 +91,14 @@ function createPCGoogleGraph(data) {
     lineSeries.dataFields.valueY = "value";
     lineSeries.dataFields.categoryX = "user";
     lineSeries.name = "Sales";
-    lineSeries.strokeWidth = 3;
+    lineSeries.strokeWidth = 2;
     
     // Add simple bullet
     var bullet = lineSeries.bullets.push(new am4charts.Bullet());
     var image = bullet.createChild(am4core.Image);
     image.href = "https://www.amcharts.com/lib/images/star.svg";
-    image.width = 30;
-    image.height = 30;
+    image.width = 10;
+    image.height = 10;
     image.horizontalCenter = "middle";
     image.verticalCenter = "middle";
 }
