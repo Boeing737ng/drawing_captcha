@@ -186,10 +186,12 @@ function createGraph() {
     createPCGoogleFailGraph(pc_google_fail_json);
 }
 function run() {
+    showLoading();
     getCaptchaData();
     setTimeout(
         function() {
-            createGraph()
+            createGraph();
+            hideLoading();
         }, 5000);
 }
 run();
