@@ -178,7 +178,7 @@ function goToNextRound(result) {
     erase();
     displayMissionWord();
     start_time = getCurrentTime();
-    startTimer(5);
+    startTimer(10);
     var rount_text = document.getElementById("current-round").textContent;
     document.getElementById("current-round").textContent = parseInt(rount_text) + 1;
 }
@@ -300,7 +300,7 @@ async function start() {
     //load the class names
     await loadDict()
     start_time = getCurrentTime();
-    startTimer(5);
+    startTimer(10);
 }
 
 /*
