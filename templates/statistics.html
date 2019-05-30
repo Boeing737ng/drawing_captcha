@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>STATISTICS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css">
     <link rel="stylesheet" href="../static/css/style.css">
     <link rel="stylesheet" href="../static/css/loading.css">
 </head>
@@ -31,49 +32,21 @@
             <div class="pc-stats">
                 <p class="desc-header bold">PC</p>
                 <div class="stats-wrapper">
-                    <p class="captcha-type">- Drawing Captcha</p>
+                    <p class="captcha-type">Captcha Time</p>
                     <p class="graph-header">Average time taken</p>
-                    <div id="pc-drawing-time-graph" class="graph"></div>
+                    <canvas id="pc-time-graph" class="graph"></canvas>
                     <p class="graph-header">Fail counts</p>
-                    <div id="pc-drawing-fail-graph" class="graph"></div>
-                </div>
-                <div class="stats-wrapper">
-                    <p class="captcha-type">- Naver Captcha</p>
-                    <p class="graph-header">Average time taken</p>
-                    <div id="pc-naver-time-graph" class="graph"></div>
-                    <p class="graph-header">Fail counts</p>
-                    <div id="pc-naver-fail-graph" class="graph"></div>
-                </div>
-                <div class="stats-wrapper">
-                    <p class="captcha-type">- Google Captcha</p>
-                    <p class="graph-header">Average time taken</p>
-                    <div id="pc-google-time-graph" class="graph"></div>
-                    <p class="graph-header">Fail counts</p>
-                    <div id="pc-google-fail-graph" class="graph"></div>
+                    <canvas id="pc-fail-graph" class="graph"></canvas>
                 </div>
             </div>
             <div class="mobile-stats">
                 <p class="desc-header bold">Mobile</p>
                 <div class="stats-wrapper">
-                    <p class="captcha-type">- Drawing Captcha</p>
+                    <p class="captcha-type">Captcha Time</p>
                     <p class="graph-header">Average time taken</p>
-                    <div id="mobile-drawing-time-graph" class="graph"></div>
+                    <canvas id="mobile-time-graph" class="graph"></canvas>
                     <p class="graph-header">Fail counts</p>
-                    <div id="mobile-drawing-fail-graph" class="graph"></div>
-                </div>
-                <div class="stats-wrapper">
-                    <p class="captcha-type">- Naver Captcha</p>
-                    <p class="graph-header">Average time taken</p>
-                    <div id="mobile-naver-time-graph" class="graph"></div>
-                    <p class="graph-header">Fail counts</p>
-                    <div id="mobile-naver-fail-graph" class="graph"></div>
-                </div>
-                <div class="stats-wrapper">
-                    <p class="captcha-type">- Google Captcha</p>
-                    <p class="graph-header">Average time taken</p>
-                    <div id="mobile-google-time-graph" class="graph"></div>
-                    <p class="graph-header">Fail counts</p>
-                    <div id="mobile-google-fail-graph" class="graph"></div>
+                    <canvas id="mobile-fail-graph" class="graph"></canvas>
                 </div>
             </div>
             <div></div>
@@ -82,17 +55,13 @@
     <div class="animationload">
         <div class="osahanloading"></div>
     </div>
-    <script src="https://www.amcharts.com/lib/4/core.js"></script>
-    <script src="https://www.amcharts.com/lib/4/charts.js"></script>
-    <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="../static/js/pc_graph.js"></script>
+    <script src="../static/js/mobile_graph.js"></script>
     <script src="../static/js/loading.js"></script>
     <script src="../static/js/firebase.js"></script>
-    <script src="../static/js/pc_time_graph.js"></script>
-    <script src="../static/js/pc_fail_graph.js"></script>
-    <script src="../static/js/mobile_time_graph.js"></script>
-    <script src="../static/js/mobile_fail_graph.js"></script>
     <script src="../static/js/firebaseIO.js"></script>
     <script src="../static/js/main.js"></script>
     <script>

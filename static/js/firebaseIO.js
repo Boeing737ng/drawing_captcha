@@ -3,20 +3,6 @@ var len=0;
 var userList = [];
 var deviceArray = ["PC", "mobile"];
 
-var pc_drawing_time_json = [];
-var pc_drawing_fail_json = [];
-var pc_naver_time_json = [];
-var pc_naver_fail_json = [];
-var pc_google_time_json = [];
-var pc_google_fail_json = [];
-
-var mobile_drawing_time_json = [];
-var mobile_drawing_fail_json = [];
-var mobile_naver_time_json = [];
-var mobile_naver_fail_json = [];
-var mobile_google_time_json = [];
-var mobile_google_fail_json = [];
-
 function storeCurrentTestResultToFirebase(captchaType,device, failCount,timeTaken, curCount) {
     var db = firebase.database();
     var ref = db.ref('users/' + getConvertedUserEmail(getSignInEmail()) +'/type/'+captchaType +'/device/' + device);
@@ -118,6 +104,15 @@ function getCaptchaData() {
         //console.log(snapshot.val());
         userListFromDB.forEach((user) => {
             //console.log(child.key)
+            var id = user.key.substring(0, user.key.lastIndexOf("@"));
+            pc_time_chart.data.labels.push(id);
+            pc_fail_chart.data.labels.push(id);
+            mobile_time_chart.data.labels.push(id);
+            mobile_fail_chart.data.labels.push(id);
+            pc_time_chart.update();
+            pc_fail_chart.update();
+            mobile_time_chart.update();
+            mobile_fail_chart.update();
             firebase.database().ref('users/' + user.key + '/type').once('value', function(type) {
                 type.forEach((data) => {
                     getUserUserTestData(user.key, data.key);
@@ -138,7 +133,6 @@ function getUserUserTestData(user, type) {
 }
 
 function setJsonData(email, type, data, device) {
-    user = email.substring(0, email.lastIndexOf("@"));
     var avgTime = 0;
     if(data.val() != null) {
         var failCount = data.val().failCount;
@@ -152,64 +146,50 @@ function setJsonData(email, type, data, device) {
             avgTime = Math.trunc(totalTime / timeCount);
         }
         if(type == 'drawing') {
-            createDrawingJson(user, avgTime, failCount, device);
+            createDrawingJson(avgTime, failCount, device);
         } else if(type == 'naver') {
-            createNaverJson(user, avgTime, failCount, device);
+            createNaverJson(avgTime, failCount, device);
         } else {
-            createGoogleJson(user, avgTime, failCount, device);
+            createGoogleJson(avgTime, failCount, device);
         }
     }
 }
 
-function createDrawingJson(user, time, failCount, device) {
+function createDrawingJson(time, failCount, device) {
     if(device == 'PC') {
-        pc_drawing_time_json.push({"user": user, "value": time});
-        pc_drawing_fail_json.push({"user": user, "failed": failCount});
+        addPCTimeGraphData(time, 'Drawing');
+        addPCFailGraphData(failCount, 'Drawing');
     } else {
-        mobile_drawing_time_json.push({"user": user, "value": time});
-        mobile_drawing_fail_json.push({"user": user, "failed": failCount});
+        addMobileTimeGraphData(time, 'Drawing');
+        addMobileFailGraphData(failCount, 'Drawing');
     }
 }
-function createNaverJson(user, time, failCount, device) {
+
+function createNaverJson(time, failCount, device) {
     if(device == 'PC') {
-        pc_naver_time_json.push({"user": user, "value": time});
-        pc_naver_fail_json.push({"user": user, "failed": failCount});
+        addPCTimeGraphData(time, 'Naver');
+        addPCFailGraphData(failCount, 'Naver');
     } else {
-        mobile_naver_time_json.push({"user": user, "value": time});
-        mobile_naver_fail_json.push({"user": user, "failed": failCount});
+        addMobileTimeGraphData(time, 'Naver');
+        addMobileFailGraphData(failCount, 'Naver');
     }
 }
-function createGoogleJson(user, time, failCount, device) {
+
+function createGoogleJson(time, failCount, device) {
     if(device == 'PC') {
-        pc_google_time_json.push({"user": user, "value": time});
-        pc_google_fail_json.push({"user": user, "failed": failCount});
+        addPCTimeGraphData(time, 'Google');
+        addPCFailGraphData(failCount, 'Google');
     } else {
-        mobile_google_time_json.push({"user": user, "value": time});
-        mobile_google_fail_json.push({"user": user, "failed": failCount});
+        addMobileTimeGraphData(time, 'Google');
+        addMobileFailGraphData(failCount, 'Google');
     }
 }
-function createGraph() {
-    console.log("JSON OBTAINED!!!")
-    createPCDrawingGraph(pc_drawing_time_json);
-    createPCDrawingFailGraph(pc_drawing_fail_json);
-    createPCNaverGraph(pc_naver_time_json);
-    createPCNaverFailGraph(pc_naver_fail_json);
-    createPCGoogleGraph(pc_google_time_json);
-    createPCGoogleFailGraph(pc_google_fail_json);
-    
-    createMobileDrawingGraph(mobile_drawing_time_json);
-    createMobileDrawingFailGraph(mobile_drawing_fail_json);
-    createMobileNaverGraph(mobile_naver_time_json);
-    createMobileNaverFailGraph(mobile_naver_fail_json);
-    createMobileGoogleGraph(mobile_google_time_json);
-    createMobileGoogleFailGraph(mobile_google_fail_json);
-}
+
 function run() {
     showLoading();
     getCaptchaData();
     setTimeout(
         function() {
-            createGraph();
             hideLoading();
         }, 5000);
 }
