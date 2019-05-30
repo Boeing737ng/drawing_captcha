@@ -2,6 +2,21 @@
 var len=0;
 var userList = [];
 var deviceArray = ["PC", "mobile"];
+var totalUserCount = 0;
+
+var totalPCDrawingTime = 0;
+var totalPCNaverTime = 0;
+var totalPCGoogleTime = 0;
+var totalPCDrawingFail = 0;
+var totalPCNaverFail = 0;
+var totalPCGoogleFail = 0;
+
+var totalMobileDrawingTime = 0;
+var totalMobileNaverTime = 0;
+var totalMobileGoogleTime = 0;
+var totalMobileDrawingFail = 0;
+var totalMobileNaverFail = 0;
+var totalMobileGoogleFail = 0;
 
 function storeCurrentTestResultToFirebase(captchaType,device, failCount,timeTaken, curCount) {
     var db = firebase.database();
@@ -101,7 +116,7 @@ function getDeviceCountFromDB() {
 function getCaptchaData() {
     firebase.database().ref('users/').once('value', function(userListFromDB) {
         userList = Object.keys(userListFromDB.val());
-        //console.log(snapshot.val());
+        totalUserCount = userList.length;
         userListFromDB.forEach((user) => {
             //console.log(child.key)
             var id = user.key.substring(0, user.key.lastIndexOf("@"));
@@ -124,15 +139,15 @@ function getCaptchaData() {
 
 function getUserUserTestData(user, type) {
     firebase.database().ref('users/' + user + '/type/' + type + '/device/PC').once('value', function(data) {
-        setJsonData(user, type, data, 'PC');
+        setJsonData(type, data, 'PC');
     }).then(function() {
         firebase.database().ref('users/' + user + '/type/' + type + '/device/mobile').once('value', function(data) {
-            setJsonData(user, type, data, 'mobile');
+            setJsonData(type, data, 'mobile');
         })
     });
 }
 
-function setJsonData(email, type, data, device) {
+function setJsonData(type, data, device) {
     var avgTime = 0;
     if(data.val() != null) {
         var failCount = data.val().failCount;
@@ -157,9 +172,13 @@ function setJsonData(email, type, data, device) {
 
 function createDrawingJson(time, failCount, device) {
     if(device == 'PC') {
+        totalPCDrawingTime += time;
+        totalPCDrawingFail += failCount;
         addPCTimeGraphData(time, 'Drawing');
         addPCFailGraphData(failCount, 'Drawing');
     } else {
+        totalMobileDrawingTime += time;
+        totalMobileDrawingFail += failCount;
         addMobileTimeGraphData(time, 'Drawing');
         addMobileFailGraphData(failCount, 'Drawing');
     }
@@ -167,9 +186,13 @@ function createDrawingJson(time, failCount, device) {
 
 function createNaverJson(time, failCount, device) {
     if(device == 'PC') {
+        totalPCNaverTime += time;
+        totalPCNaverFail += failCount;
         addPCTimeGraphData(time, 'Naver');
         addPCFailGraphData(failCount, 'Naver');
     } else {
+        totalMobileNaverTime += time;
+        totalMobileNaverFail += failCount;
         addMobileTimeGraphData(time, 'Naver');
         addMobileFailGraphData(failCount, 'Naver');
     }
@@ -177,12 +200,32 @@ function createNaverJson(time, failCount, device) {
 
 function createGoogleJson(time, failCount, device) {
     if(device == 'PC') {
+        totalPCGoogleTime += time;
+        totalPCGoogleFail += failCount;
         addPCTimeGraphData(time, 'Google');
         addPCFailGraphData(failCount, 'Google');
     } else {
+        totalMobileGoogleTime += time;
+        totalMobileGoogleFail += failCount;
         addMobileTimeGraphData(time, 'Google');
         addMobileFailGraphData(failCount, 'Google');
     }
+}
+
+function createAvgGraph() {
+    addPCTimeAvgGraph(totalPCDrawingTime / totalUserCount);
+    addPCTimeAvgGraph(totalPCNaverTime / totalUserCount);
+    addPCTimeAvgGraph(totalPCGoogleTime / totalUserCount);
+    addPCFailAvgGraph(totalPCDrawingFail / totalUserCount);
+    addPCFailAvgGraph(totalPCNaverFail / totalUserCount);
+    addPCFailAvgGraph(totalPCGoogleFail / totalUserCount);
+
+    addMobileTimeAvgGraph(totalMobileDrawingTime / totalUserCount);
+    addMobileTimeAvgGraph(totalMobileNaverTime / totalUserCount);
+    addMobileTimeAvgGraph(totalMobileGoogleTime / totalUserCount);
+    addMobileFailAvgGraph(totalMobileDrawingFail / totalUserCount);
+    addMobileFailAvgGraph(totalMobileNaverFail / totalUserCount);
+    addMobileFailAvgGraph(totalMobileGoogleFail / totalUserCount);
 }
 
 function run() {
@@ -190,6 +233,7 @@ function run() {
     getCaptchaData();
     setTimeout(
         function() {
+            createAvgGraph();
             hideLoading();
         }, 5000);
 }

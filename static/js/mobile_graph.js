@@ -102,3 +102,75 @@ function addMobileFailGraphData(fail, type) {
     }
     mobile_fail_chart.update();
 }
+
+var mobileCaptchaTimeAvg = document.getElementById('mobile-avg-captcha-time');
+var mobile_avg_time = new Chart(mobileCaptchaTimeAvg, {
+    type: 'bar',
+    data: {
+        labels: ['Drawing Captcha', 'Naver Captcha', 'Google Captcha'],
+        datasets: [{
+            label: [],
+            data: [],
+            backgroundColor: [
+                'rgba(92, 209, 229, 0.2)',
+                'rgba(29, 219, 22, 0.2)',
+                'rgba(166, 166, 166, 0.2)'
+            ],
+            borderColor: [
+                'rgba(92, 209, 229, 1)',
+                'rgba(29, 219, 22, 1)',
+                'rgba(166, 166, 166, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+function addMobileTimeAvgGraph(time) {
+    mobile_avg_time.data.datasets[0].data.push(time);
+    mobile_avg_time.update();
+}
+
+var mobileCaptchafailAvg = document.getElementById('mobile-avg-captcha-fail');
+var mobile_avg_fail = new Chart(mobileCaptchafailAvg, {
+    type: 'bar',
+    data: {
+        labels: ['Drawing Captcha', 'Naver Captcha', 'Google Captcha'],
+        datasets: [{
+            label: [],
+            data: [],
+            backgroundColor: [
+                'rgba(92, 209, 229, 0.2)',
+                'rgba(29, 219, 22, 0.2)',
+                'rgba(166, 166, 166, 0.2)'
+            ],
+            borderColor: [
+                'rgba(92, 209, 229, 1)',
+                'rgba(29, 219, 22, 1)',
+                'rgba(166, 166, 166, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+function addMobileFailAvgGraph(time) {
+    mobile_avg_fail.data.datasets[0].data.push(time);
+    mobile_avg_fail.update();
+}
