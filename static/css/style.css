@@ -563,8 +563,9 @@ canvas {
     font-size: 20px;
 }
 .graph {
+    position: relative !important;
     width: 100%;
-    height: 300px;
+    height: 450px !important;
 }
 .stats-wrapper .captcha-type{
     font-size: 22px;
