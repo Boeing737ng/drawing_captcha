@@ -1,6 +1,6 @@
 flask
 tensorflowjs
-tensorflow==1.9.0
+tensorflow==1.12.2
 svgwrite
 ipython
 Pillow
